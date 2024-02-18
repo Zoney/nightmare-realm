@@ -4,7 +4,6 @@ import { destroyGame, startGame } from "@repo/phaser-game/src/game";
 const GameComponent = () => {
   let gameStarted = false;
 
-
   useEffect(() => {
     if (!gameStarted) {
       startGame();

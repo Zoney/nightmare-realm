@@ -9,6 +9,7 @@ class GameScene extends Phaser.Scene {
   musicButton!: Phaser.GameObjects.Sprite; // Declare the 'musicButton' property
   musicOn = true; // Declare the 'musicOn' property
   sfxOn = true; // Declare the 'sfxOn' property
+  resettingPuppy = false;
 
   preload(this: GameScene) {
     this.load.image("puppy", "puppy2.png");
@@ -16,10 +17,33 @@ class GameScene extends Phaser.Scene {
     this.load.image("offButton", "off.png"); // Load the Music button image
     this.load.audio("jump", "jump.m4a"); // Load the jump sound
     this.load.audio("music", "music.m4a"); // Load the background music
+    this.load.image('background', 'background.webp');
+
+  }
+
+  update(this: GameScene) {
+    // Check if the puppy has reached the top of the screen
+    if (this.puppy.y <= 0 || this.resettingPuppy) {
+      this.resettingPuppy = true;
+      // Set the puppy's y position to the screen height
+      this.puppy.y = screenHeight;
+      // Spin the puppy
+      this.tweens.add({
+        targets: this.puppy,
+        angle: 360, // Spin the puppy 360 degrees
+        duration: 1000, // Duration of the spin
+        ease: "Power2", // Easing function
+      });
+    }
+    if (this.puppy.y >= screenHeight && this.resettingPuppy) {
+      this.resettingPuppy = false;
+    }
   }
 
   create(this: GameScene) {
-    // Play the background music if music is on
+    const backgroundImage = this.add.image(0, 0, 'background').setOrigin(0, 0);
+    backgroundImage.alpha = 0.2; // Set the alpha value to 0.8 for a faded effect
+
     if (this.musicOn) {
       this.sound.play("music", { loop: true });
     }
@@ -78,6 +102,9 @@ class GameScene extends Phaser.Scene {
 
     // Add the jump method
     function jump(this: GameScene) {
+      if (this.resettingPuppy) {
+        return;
+      }
       this.tweens.add({
         targets: this.puppy,
         y: this.puppy.y - 100,

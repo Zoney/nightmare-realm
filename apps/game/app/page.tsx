@@ -1,5 +1,6 @@
 import { Button } from "@repo/ui/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 export default function Page() {
   return (
     <main>
@@ -13,9 +14,9 @@ export default function Page() {
         />
 
         <h1 className="mb-4 text-4xl font-bold text-white">Nightmare Realm</h1>
-        <Button className="mb-4 w-64 bg-black text-white" variant="default">
+        <Link className="mb-4 w-64 bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800" href={"puppy"}>
           Start Game
-        </Button>
+        </Link>
         <Button className="w-64 bg-white text-black" variant="outline">
           About
         </Button>

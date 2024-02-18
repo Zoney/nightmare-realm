@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 export default function Page() {
   return (
-    <main className="flex flex-col sm:flex-row bg-[#bd1e59]">
+    <main className="flex flex-col sm:flex-row bg-[#bd1e59] h-screen sm:items-center">
       <div className="flex w-full flex-col items-center justify-center bg-[#bd1e59] p-4 text-center">
         <Image
           alt="Nightmare Realm Logo"
@@ -24,7 +24,7 @@ export default function Page() {
           About
         </Button>
       </div>
-      <div className="flex  w-full flex-col items-center justify-center bg-[#bd1e59] p-4 text-center">
+      <div className="flex w-full flex-col items-center justify-center bg-[#bd1e59] p-4 text-center">
         <Image
           alt="Nightmare Realm Logo"
           className="mb-8 max-w-xs md:max-w-lg"

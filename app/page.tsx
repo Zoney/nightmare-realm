@@ -1,9 +1,9 @@
-import { Button } from "@repo/ui/components/ui/button";
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 export default function Page() {
   return (
-    <main className="flex flex-col sm:flex-row bg-[#bd1e59] h-screen sm:items-center">
+    <main className="relative flex flex-col sm:flex-row bg-[#bd1e59] h-screen sm:items-center">
       <div className="flex w-full flex-col items-center justify-center bg-[#bd1e59] p-4 text-center">
         <Image
           alt="Nightmare Realm Logo"
@@ -44,6 +44,12 @@ export default function Page() {
           About
         </Button>
       </div>
+      <a
+        href="/personvern"
+        className="absolute bottom-2 right-3 text-xs text-white/60 hover:text-white"
+      >
+        Personvern
+      </a>
     </main>
   );
 }

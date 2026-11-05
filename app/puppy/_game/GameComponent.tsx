@@ -1,19 +1,13 @@
 import React, { useEffect } from "react";
-import { destroyGame, startGame } from "@repo/phaser-game/src/game";
+import { destroyGame, startGame } from "@/lib/game";
 
 const GameComponent = () => {
-  let gameStarted = false;
-
   useEffect(() => {
-    if (!gameStarted) {
-      startGame();
-      gameStarted = true;
-    }
+    startGame();
     return () => {
       destroyGame();
-      gameStarted = false;
     };
-  }, [gameStarted]);
+  }, []);
 
   return (
     <div
@@ -39,6 +33,12 @@ const GameComponent = () => {
       >
         Jump, Puppy!
       </p>
+      <a
+        href="/personvern"
+        className="absolute bottom-2 right-3 text-xs text-purple-900/50 hover:text-purple-900"
+      >
+        Personvern
+      </a>
     </div>
   );
 };
